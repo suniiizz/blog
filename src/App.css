@@ -25,6 +25,17 @@
   border-bottom: 1px solid grey;
 }
 
+.list h4 {
+  cursor: pointer;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: bold;
+}
+
 .list-thumbsup {
   cursor: pointer;
 }

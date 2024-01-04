@@ -8,6 +8,7 @@ function App() {
     "봄 나들이 코스 소개",
   ]);
   const [thumbsUp, setThumbsUp] = useState(0);
+  const [modal, setModal] = useState(false);
 
   const modifyTitle = () => {
     const modify = [...title];
@@ -26,6 +27,8 @@ function App() {
   //   { id: 2, title: "찐 맛집 소개", date: "1월 13일 발행" },
   // ];
 
+  console.log("modal", modal);
+
   return (
     <>
       <div className="App">
@@ -37,26 +40,28 @@ function App() {
         <button onClick={() => 글정렬()}>정렬</button>
 
         <div className="list">
-          <h4>
-            {title[0]}{" "}
+          <div className="title">
+            <h4 onClick={() => setModal((prev) => !prev)}>{title[0]}</h4>
             <span
               onClick={() => setThumbsUp(thumbsUp + 1)}
               className="list-thumbsup"
             >
               👍
+              {thumbsUp}
             </span>
-            {thumbsUp}
-          </h4>
+          </div>
           <p>12월 29일 발행</p>
         </div>
-        <div className="list">
+
+        {/* <div className="list">
           <h4>{title[1]}</h4>
           <p>1월 13일 발행</p>
         </div>
         <div className="list">
           <h4>{title[2]}</h4>
           <p>2월 3일 발행</p>
-        </div>
+        </div> */}
+
         {/* {blogList.map((list) => {
           return (
             <div className="list" key={list.id}>
@@ -66,8 +71,22 @@ function App() {
           );
         })} */}
       </div>
+
+      {modal ? <Modal /> : null}
     </>
   );
 }
+
+const Modal = () => {
+  return (
+    <>
+      <div className="modal">
+        <h4>제목</h4>
+        <p>날짜</p>
+        <p>상세내용</p>
+      </div>
+    </>
+  );
+};
 
 export default App;
